@@ -32,6 +32,13 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun providesLoggingInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS)
+    }
+
+
+    @Singleton
+    @Provides
     fun providesOkhttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)

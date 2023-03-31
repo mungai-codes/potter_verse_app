@@ -23,8 +23,11 @@ class MainActivity : ComponentActivity() {
                     bottomBar = {
                         BottomNavigation(navController = navController)
                     }
-                ) {
-                    NavGraph(navController = navController)
+                ) { innerPadding ->
+                    NavGraph(
+                        navController = navController,
+                        bottomPadding = innerPadding.calculateBottomPadding()
+                    )
                 }
             }
         }

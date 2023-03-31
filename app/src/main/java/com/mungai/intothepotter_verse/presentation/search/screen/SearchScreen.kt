@@ -10,13 +10,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
-    navController: NavController
+    navController: NavController,
+    bottomPadding: Dp
 ) {
 
     Scaffold(
@@ -30,7 +32,7 @@ fun SearchScreen(
                 .fillMaxSize()
                 .padding(
                     top = innerPadding.calculateTopPadding(),
-                    bottom = innerPadding.calculateBottomPadding()
+                    bottom = bottomPadding
                 ),
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
         ) {

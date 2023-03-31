@@ -1,6 +1,7 @@
 package com.mungai.intothepotter_verse.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -12,17 +13,17 @@ import com.mungai.intothepotter_verse.presentation.navigation.bottom_navigation.
 import com.mungai.intothepotter_verse.presentation.search.screen.SearchScreen
 
 @Composable
-fun NavGraph(navController: NavHostController) {
+fun NavGraph(navController: NavHostController, bottomPadding: Dp) {
     NavHost(
         navController = navController,
         route = Graphs.MAIN,
         startDestination = BottomNavItem.Home.route
     ) {
         composable(BottomNavItem.Home.route) {
-            HomeScreen(navController = navController)
+            HomeScreen(navController = navController, bottomPadding = bottomPadding)
         }
         composable(BottomNavItem.Search.route) {
-            SearchScreen(navController = navController)
+            SearchScreen(navController = navController, bottomPadding = bottomPadding)
         }
         detailsNavGraph()
     }

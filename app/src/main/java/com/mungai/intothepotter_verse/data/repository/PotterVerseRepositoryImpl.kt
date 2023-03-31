@@ -17,7 +17,7 @@ class PotterVerseRepositoryImpl @Inject constructor(
     private val database: PotterVerseDatabase
 ) : PotterVerseRepository {
 
-    val dao = database.dao
+    private val dao = database.dao
 
     override fun getAllCharacters(): Flow<Resource<List<Character>>> {
         return flow {

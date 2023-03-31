@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -26,6 +27,10 @@ class HomeViewModel @Inject constructor(
 
     init {
         getAllCharacters()
+    }
+
+    fun updateQuery(input: String) {
+        _state.update { it.copy(query = input) }
     }
 
     private fun getAllCharacters() {
@@ -49,7 +54,7 @@ class HomeViewModel @Inject constructor(
                         _state.update { it.copy(loading = false, errorMessage = result.message) }
                     }
                 }
-            }
+            }.launchIn(this)
         }
     }
 }
