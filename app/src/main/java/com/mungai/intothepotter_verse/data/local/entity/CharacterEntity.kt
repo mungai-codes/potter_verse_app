@@ -1,5 +1,6 @@
 package com.mungai.intothepotter_verse.data.local.entity
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.mungai.potterpedia.domain.model.Character
@@ -19,12 +20,13 @@ data class CharacterEntity(
     val hogwartsStudent: Boolean,
     val house: String,
     @PrimaryKey
-    val id: String? = null,
+    val id: String,
     val image: String?,
     val name: String,
     val patronus: String,
     val species: String,
-    val wand: WandEntity,
+    @Embedded
+    val wand: WandData,
     val wizard: Boolean,
     val yearOfBirth: Int?
 ) {

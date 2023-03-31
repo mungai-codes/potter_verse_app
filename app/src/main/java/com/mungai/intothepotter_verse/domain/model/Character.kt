@@ -13,7 +13,7 @@ data class Character(
     val hogwartsStaff: Boolean,
     val hogwartsStudent: Boolean,
     val house: String,
-    val id: String?,
+    val id: String,
     val image: String?,
     val name: String,
     val patronus: String,
