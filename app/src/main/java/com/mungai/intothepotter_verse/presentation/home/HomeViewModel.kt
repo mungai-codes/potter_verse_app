@@ -27,6 +27,7 @@ class HomeViewModel @Inject constructor(
 
     init {
         getAllCharacters()
+        getAllSpells()
     }
 
     fun updateQuery(input: String) {
@@ -46,6 +47,31 @@ class HomeViewModel @Inject constructor(
                             it.copy(
                                 loading = false,
                                 characters = result.data ?: emptyList()
+                            )
+                        }
+                    }
+
+                    is Resource.Error -> {
+                        _state.update { it.copy(loading = false, errorMessage = result.message) }
+                    }
+                }
+            }.launchIn(this)
+        }
+    }
+
+    private fun getAllSpells() {
+        viewModelScope.launch(ioDispatcher) {
+            repository.getSpells().onEach { result ->
+                when (result) {
+                    is Resource.Loading -> {
+                        _state.update { it.copy(loading = true) }
+                    }
+
+                    is Resource.Success -> {
+                        _state.update {
+                            it.copy(
+                                loading = false,
+                                spells = result.data ?: emptyList()
                             )
                         }
                     }

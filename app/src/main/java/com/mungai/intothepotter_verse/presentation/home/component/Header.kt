@@ -18,8 +18,8 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.Divider
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
@@ -49,16 +49,13 @@ fun Header(
     Column(
         modifier = modifier
             .fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         OutlinedTextField(
             value = query,
             onValueChange = { onQueryChange(it) },
             shape = RoundedCornerShape(16.dp),
-            placeholder = {
-                Text(text = "Search...")
-            },
             trailingIcon = {
                 IconButton(onClick = { onSearch(query) }) {
                     Icon(
@@ -68,7 +65,7 @@ fun Header(
                 }
             },
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                unfocusedBorderColor = Color(0xFF000000),
+                unfocusedBorderColor = Color.Black,
                 focusedBorderColor = Color(0xFFFFD700),
                 textColor = Color(0xFFA52A2A)
             ),
@@ -87,15 +84,15 @@ fun Header(
             ),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp, top = 8.dp)
+                .padding(start = 16.dp, end = 16.dp, top = 12.dp)
         )
         LazyRow(
             modifier = Modifier
                 .fillMaxWidth(),
             contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-
             items(houses) { house ->
                 HouseBadge(
                     badge = house.badge,
@@ -103,7 +100,6 @@ fun Header(
                     textColor = house.houseColor,
                     onClick = { onHouseClick(it) })
             }
-
         }
         Divider(thickness = 3.dp, color = Color(0xFFFFD700))
     }

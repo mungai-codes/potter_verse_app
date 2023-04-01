@@ -7,3 +7,25 @@ u
 Eapp/src/main/java/com/mungai/intothepotter_verse/domain/model/Wand.kt,2\8\287a5b225b6da6c7114ddcb274443c7c33088ada
 u
 Eapp/src/main/java/com/mungai/intothepotter_verse/common/Qualifiers.kt,c\e\cec406d7a8b4de1248afb6fca2a5db6e31b9811d
+›
+kapp/src/main/java/com/mungai/intothepotter_verse/presentation/navigation/bottom_navigation/BottomNavItem.kt,8\8\88886209c2092055b9307d3304481727307053eb
+{
+Kapp/src/main/java/com/mungai/intothepotter_verse/data/remote/dto/WandDto.kt,7\2\7294d3249951396a9dbda13a57169d21c24ee541
+‚
+Rapp/src/main/java/com/mungai/intothepotter_verse/presentation/navigation/Graphs.kt,6\2\6259ba2ae4b17448ac2001c9d4a6ad016cef935d
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+Œ
+\app/src/main/java/com/mungai/intothepotter_verse/presentation/detail/screen/DetailsScreen.kt,4\f\4fa39b13087eccf2ef3c0129dfe7a2991f629c16
+t
+Dapp/src/main/java/com/mungai/intothepotter_verse/common/Constants.kt,b\9\b95a302f689300dd3c8f47391279f444006aad9d
+s
+Capp/src/main/java/com/mungai/intothepotter_verse/common/Resource.kt,2\d\2d7673f33c4108151468748f4f42d020a5cc8b75
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+p
+@app/src/main/java/com/mungai/intothepotter_verse/di/AppModule.kt,0\4\049e1f01136b64b2e6da5e42ceca5d902cfcbacb
+„
+Tapp/src/main/java/com/mungai/intothepotter_verse/presentation/navigation/NavGraph.kt,2\3\236ca55dab784ece9ea8759754d08168f37b34e7
+p
+@app/src/main/java/com/mungai/intothepotter_verse/MainActivity.kt,c\b\cbb0eafc8a6d6d2f6c6a940fad5e75376ed3e433

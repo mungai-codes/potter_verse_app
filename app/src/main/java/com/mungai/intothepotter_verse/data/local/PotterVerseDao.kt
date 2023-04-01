@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.mungai.intothepotter_verse.data.local.entity.CharacterEntity
+import com.mungai.intothepotter_verse.data.local.entity.SpellEntity
 
 @Dao
 interface PotterVerseDao {
@@ -22,5 +23,11 @@ interface PotterVerseDao {
 
     @Delete
     suspend fun deleteCharacter(character: CharacterEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSpells(spells: List<SpellEntity>)
+
+    @Query("SELECT * from spell_table")
+    suspend fun getAllSpells(): List<SpellEntity>
 
 }

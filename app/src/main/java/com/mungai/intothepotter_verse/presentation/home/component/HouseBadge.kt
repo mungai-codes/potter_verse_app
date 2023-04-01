@@ -43,7 +43,7 @@ fun HouseBadge(
     ) {
         Box(
             modifier = Modifier
-                .size(75.dp)
+                .size(65.dp)
                 .background(Color.Transparent)
         ) {
             Image(
