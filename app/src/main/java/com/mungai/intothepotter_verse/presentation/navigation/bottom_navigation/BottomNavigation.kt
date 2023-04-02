@@ -28,7 +28,7 @@ fun BottomNavigation(navController: NavController) {
 
     if (bottomBarDestination) {
         BottomNavigation(
-            backgroundColor = Color(0xFFA52A2A),
+            backgroundColor = Color(0xFFD86767),
             contentColor = Color.Black
         ) {
             screens.forEach { screen ->

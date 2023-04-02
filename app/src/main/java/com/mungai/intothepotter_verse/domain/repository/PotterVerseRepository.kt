@@ -7,6 +7,11 @@ import kotlinx.coroutines.flow.Flow
 
 interface PotterVerseRepository {
 
-    fun getAllCharacters(): Flow<Resource<List<Character>>>
     fun getSpells(): Flow<Resource<List<Spell>>>
+
+    fun getMainCast(): Flow<Resource<List<Character>>>
+
+    fun getStaff(): Flow<Resource<List<Character>>>
+
+    fun getOthers(): Flow<Resource<List<Character>>>
 }

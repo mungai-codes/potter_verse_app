@@ -26,17 +26,18 @@ class HomeViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     init {
-        getAllCharacters()
-        getAllSpells()
+        getMainCast()
+        getStaff()
+        getSpells()
     }
 
     fun updateQuery(input: String) {
         _state.update { it.copy(query = input) }
     }
 
-    private fun getAllCharacters() {
+    private fun getMainCast() {
         viewModelScope.launch(ioDispatcher) {
-            repository.getAllCharacters().onEach { result ->
+            repository.getMainCast().onEach { result ->
                 when (result) {
                     is Resource.Loading -> {
                         _state.update { it.copy(loading = true) }
@@ -46,7 +47,7 @@ class HomeViewModel @Inject constructor(
                         _state.update {
                             it.copy(
                                 loading = false,
-                                characters = result.data ?: emptyList()
+                                mainCast = result.data ?: emptyList()
                             )
                         }
                     }
@@ -59,7 +60,33 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun getAllSpells() {
+    private fun getStaff() {
+        viewModelScope.launch(ioDispatcher) {
+            repository.getStaff().onEach { result ->
+                when (result) {
+                    is Resource.Loading -> {
+                        _state.update { it.copy(loadingStaff = true) }
+                    }
+
+                    is Resource.Success -> {
+                        _state.update {
+                            it.copy(
+                                loadingStaff = false,
+                                staff = result.data ?: emptyList()
+                            )
+                        }
+                    }
+
+                    is Resource.Error -> {
+                        _state.update { it.copy(loadingStaff = false, staffError = result.message) }
+
+                    }
+                }
+            }.launchIn(this)
+        }
+    }
+
+    private fun getSpells() {
         viewModelScope.launch(ioDispatcher) {
             repository.getSpells().onEach { result ->
                 when (result) {

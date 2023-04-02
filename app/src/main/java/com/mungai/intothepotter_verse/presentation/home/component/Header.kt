@@ -65,7 +65,7 @@ fun Header(
                 }
             },
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                unfocusedBorderColor = Color.Black,
+                unfocusedBorderColor = Color(0xFFA52A2A),
                 focusedBorderColor = Color(0xFFFFD700),
                 textColor = Color(0xFFA52A2A)
             ),
