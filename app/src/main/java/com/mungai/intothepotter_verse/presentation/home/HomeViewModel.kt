@@ -28,7 +28,9 @@ class HomeViewModel @Inject constructor(
     init {
         getMainCast()
         getStaff()
+        getWizards()
         getSpells()
+        getStudents()
     }
 
     fun updateQuery(input: String) {
@@ -98,7 +100,57 @@ class HomeViewModel @Inject constructor(
                         _state.update {
                             it.copy(
                                 loading = false,
-                                spells = result.data ?: emptyList()
+                                spells = result.data?.shuffled()?.take(15) ?: emptyList()
+                            )
+                        }
+                    }
+
+                    is Resource.Error -> {
+                        _state.update { it.copy(loading = false, errorMessage = result.message) }
+                    }
+                }
+            }.launchIn(this)
+        }
+    }
+
+    private fun getWizards() {
+        viewModelScope.launch(ioDispatcher) {
+            repository.getWizards().onEach { result ->
+                when (result) {
+                    is Resource.Loading -> {
+                        _state.update { it.copy(loading = true) }
+                    }
+
+                    is Resource.Success -> {
+                        _state.update {
+                            it.copy(
+                                loading = false,
+                                wizards = result.data?.shuffled()?.take(15) ?: emptyList()
+                            )
+                        }
+                    }
+
+                    is Resource.Error -> {
+                        _state.update { it.copy(loading = false, errorMessage = result.message) }
+                    }
+                }
+            }.launchIn(this)
+        }
+    }
+
+    private fun getStudents() {
+        viewModelScope.launch(ioDispatcher) {
+            repository.getStudents().onEach { result ->
+                when (result) {
+                    is Resource.Loading -> {
+                        _state.update { it.copy(loading = true) }
+                    }
+
+                    is Resource.Success -> {
+                        _state.update {
+                            it.copy(
+                                loading = false,
+                                students = result.data ?: emptyList()
                             )
                         }
                     }

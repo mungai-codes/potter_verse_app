@@ -19,6 +19,8 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -31,10 +33,10 @@ import com.mungai.potterpedia.domain.model.Character
 fun CharacterCard(
     modifier: Modifier = Modifier,
     character: Character,
+    imageSize: Dp = 100.dp,
+    textSize: TextUnit = 15.sp,
     onClick: (String) -> Unit = {}
 ) {
-
-    val (main, secondary, alternate) = getHouseColors(character.house)
 
     val errorImage = if (character.hogwartsStudent) R.drawable.wizard_junior else R.drawable.wizard
     Column(
@@ -44,9 +46,10 @@ fun CharacterCard(
     ) {
         Surface(
             modifier = Modifier
-                .size(100.dp),
+                .size(imageSize),
             shape = CircleShape,
-            border = BorderStroke(width = 3.dp, color = secondary)
+            border = BorderStroke(width = 3.dp, color = getHouseColors(character.house).second),
+            elevation = 12.dp
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
@@ -66,9 +69,9 @@ fun CharacterCard(
             text = character.name,
             fontFamily = FontFamily(Font(R.font.euphoria_script)),
             fontWeight = FontWeight.Bold,
-            fontSize = 15.sp,
+            fontSize = textSize,
             textAlign = TextAlign.Center,
-            color = alternate
+            color = getHouseColors(character.house).third
         )
     }
 

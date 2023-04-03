@@ -1,6 +1,7 @@
 package com.mungai.intothepotter_verse.common
 
 import androidx.compose.ui.graphics.Color
+import com.mungai.intothepotter_verse.R
 
 fun getHouseColors(house: String): Triple<Color, Color, Color> {
     return when (house) {
@@ -22,6 +23,30 @@ fun getHouseColors(house: String): Triple<Color, Color, Color> {
 
         else -> {
             Triple(Color(0xFFA52A2A), Color(0xFFFFD700), Color(0xFF000000))
+        }
+    }
+}
+
+fun getHouseBadge(house: String): Int {
+    return when (house) {
+        "Gryffindor" -> {
+            R.drawable.gryffindor_logo
+        }
+
+        "Slytherin" -> {
+            R.drawable.slytherin_logo
+        }
+
+        "Ravenclaw" -> {
+            R.drawable.ravenclaw_logo
+        }
+
+        "Hufflepuff" -> {
+            R.drawable.hufflepuff_logo
+        }
+
+        else -> {
+            R.drawable.hogwarts_logo
         }
     }
 }

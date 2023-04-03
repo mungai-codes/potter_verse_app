@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -25,6 +26,8 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mungai.intothepotter_verse.R
@@ -34,7 +37,9 @@ fun Pill(
     modifier: Modifier = Modifier,
     isHeader: Boolean = false,
     icon: ImageVector,
-    title: String,
+    iconSize: Dp = 24.dp,
+    title: Pair<String, Color>,
+    titleSize: TextUnit = 20.sp,
     onClick: () -> Unit = {}
 ) {
     Surface(
@@ -52,15 +57,16 @@ fun Pill(
             ) {
                 Icon(
                     imageVector = icon,
-                    contentDescription = title,
-                    tint = Color(0xFFA52A2A)
+                    contentDescription = title.first,
+                    tint = Color(0xFFA52A2A),
+                    modifier = Modifier.size(iconSize)
                 )
                 Text(
-                    text = title,
+                    text = title.first,
                     fontWeight = FontWeight.SemiBold,
                     fontFamily = FontFamily(Font(R.font.euphoria_script)),
-                    fontSize = 20.sp,
-                    color = MaterialTheme.colors.onSurface
+                    fontSize = titleSize,
+                    color = title.second
                 )
             }
         } else {
@@ -72,16 +78,17 @@ fun Pill(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = title,
+                    text = title.first,
                     fontWeight = FontWeight.SemiBold,
                     fontFamily = FontFamily(Font(R.font.euphoria_script)),
-                    fontSize = 20.sp,
+                    fontSize = titleSize,
                     color = MaterialTheme.colors.onSurface
                 )
                 Icon(
                     imageVector = icon,
-                    contentDescription = title,
-                    tint = MaterialTheme.colors.onSurface
+                    contentDescription = title.first,
+                    tint = MaterialTheme.colors.onSurface,
+                    modifier = Modifier.size(iconSize)
                 )
             }
         }
@@ -107,12 +114,12 @@ fun PillPreview() {
             Pill(
                 isHeader = true,
                 icon = Icons.Outlined.Grade,
-                title = "Main Cast"
+                title = Pair("Main Cast", MaterialTheme.colors.onSurface)
             )
             Pill(
                 isHeader = false,
                 icon = Icons.Outlined.ChevronRight,
-                title = "See More"
+                title = Pair("SeeMore", MaterialTheme.colors.onSurface)
             )
         }
 

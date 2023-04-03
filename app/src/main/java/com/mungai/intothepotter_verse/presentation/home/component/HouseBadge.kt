@@ -21,10 +21,13 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mungai.intothepotter_verse.R
 import com.mungai.intothepotter_verse.presentation.ui.theme.IntoThePotterVerseTheme
+
 
 @Composable
 fun HouseBadge(
@@ -32,10 +35,12 @@ fun HouseBadge(
     badge: Int,
     title: String,
     textColor: Color,
+    badgeSize: Dp = 65.dp,
+    textSize: TextUnit = 14.sp,
     onClick: (String) -> Unit = {}
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .wrapContentSize()
             .background(Color.Transparent),
         verticalArrangement = Arrangement.spacedBy(6.dp),
@@ -43,7 +48,7 @@ fun HouseBadge(
     ) {
         Box(
             modifier = Modifier
-                .size(65.dp)
+                .size(badgeSize)
                 .background(Color.Transparent)
         ) {
             Image(
@@ -59,7 +64,7 @@ fun HouseBadge(
         Text(
             text = title,
             textAlign = TextAlign.Center,
-            fontSize = 15.sp,
+            fontSize = textSize,
             fontFamily = FontFamily(Font(R.font.garamond_semibold_italic)),
             color = textColor
         )

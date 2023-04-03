@@ -13,5 +13,11 @@ interface PotterVerseRepository {
 
     fun getStaff(): Flow<Resource<List<Character>>>
 
-    fun getOthers(): Flow<Resource<List<Character>>>
+    fun getStudents(): Flow<Resource<List<Character>>>
+
+    fun getWizards(): Flow<Resource<List<Character>>>
+
+    fun getAllCharacters() : Flow<Resource<List<Character>>>
+
+    fun getCharacterById(characterId: String) : Flow<Resource<Character>>
 }

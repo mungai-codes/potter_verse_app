@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material3.Scaffold
+import androidx.compose.material.Scaffold
 import androidx.navigation.compose.rememberNavController
 import com.mungai.intothepotter_verse.presentation.navigation.NavGraph
 import com.mungai.intothepotter_verse.presentation.navigation.bottom_navigation.BottomNavigation

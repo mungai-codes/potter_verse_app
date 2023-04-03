@@ -1,5 +1,6 @@
 package com.mungai.intothepotter_verse.data.repository
 
+import android.util.Log
 import com.mungai.intothepotter_verse.common.Resource
 import com.mungai.intothepotter_verse.data.local.PotterVerseDatabase
 import com.mungai.intothepotter_verse.data.remote.ApiService
@@ -15,7 +16,7 @@ import javax.inject.Inject
 
 class PotterVerseRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
-    private val database: PotterVerseDatabase
+    database: PotterVerseDatabase
 ) : PotterVerseRepository {
 
     private val dao = database.dao
@@ -101,15 +102,15 @@ class PotterVerseRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getOthers(): Flow<Resource<List<Character>>> {
+    override fun getStudents(): Flow<Resource<List<Character>>> {
         return flow {
             emit(Resource.Loading())
-            val localData = dao.getOtherCharacters()
+            val localData = dao.getStudents()
             if (localData.isEmpty()) {
                 try {
                     val response = apiService.getAllCharacters().map { it.toCharacterEntity() }
                     dao.insertCharacters(characters = response)
-                    val data = dao.getOtherCharacters()
+                    val data = dao.getStudents()
                     emit(Resource.Success(data = data.map { it.toCharacter() }))
                 } catch (e: HttpException) {
                     emit(Resource.Error(message = e.localizedMessage))
@@ -120,6 +121,66 @@ class PotterVerseRepositoryImpl @Inject constructor(
                 }
             } else {
                 emit(Resource.Success(data = localData.map { it.toCharacter() }))
+            }
+        }.catch { e ->
+            emit(Resource.Error(message = e.localizedMessage))
+            e.printStackTrace()
+        }
+    }
+
+    override fun getWizards(): Flow<Resource<List<Character>>> {
+        return flow {
+            emit(Resource.Loading())
+            val localData = dao.getWizards()
+            if (localData.isEmpty()) {
+                try {
+                    val response = apiService.getAllCharacters().map { it.toCharacterEntity() }
+                    dao.insertCharacters(characters = response)
+                    val data = dao.getWizards()
+                    emit(Resource.Success(data = data.map { it.toCharacter() }))
+                } catch (e: HttpException) {
+                    emit(Resource.Error(message = e.localizedMessage))
+                    e.printStackTrace()
+                } catch (e: IOException) {
+                    emit(Resource.Error(message = e.localizedMessage))
+                    e.printStackTrace()
+                }
+            } else {
+                emit(Resource.Success(data = localData.map { it.toCharacter() }))
+            }
+        }.catch { e ->
+            emit(Resource.Error(message = e.localizedMessage))
+            e.printStackTrace()
+        }
+    }
+
+    override fun getAllCharacters(): Flow<Resource<List<Character>>> {
+        return flow<Resource<List<Character>>> {
+            emit(Resource.Loading())
+
+            try {
+                val data = dao.getAllCharacters().map { it.toCharacter() }
+                emit(Resource.Success(data = data))
+
+            } catch (e: IOException) {
+                emit(Resource.Error(message = e.localizedMessage))
+                e.printStackTrace()
+            }
+        }.catch { e ->
+            emit(Resource.Error(message = e.localizedMessage))
+            e.printStackTrace()
+        }
+    }
+
+    override fun getCharacterById(characterId: String): Flow<Resource<Character>> {
+        return flow<Resource<Character>> {
+            emit(Resource.Loading())
+            try {
+                val data = dao.getCharacterById(characterId = characterId).toCharacter()
+                emit(Resource.Success(data = data))
+            } catch (e: IOException) {
+                emit(Resource.Error(message = e.localizedMessage))
+                e.printStackTrace()
             }
         }.catch { e ->
             emit(Resource.Error(message = e.localizedMessage))
