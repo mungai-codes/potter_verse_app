@@ -162,4 +162,30 @@ class HomeViewModel @Inject constructor(
             }.launchIn(this)
         }
     }
+
+    fun getSpellById(id: String) {
+        viewModelScope.launch(ioDispatcher) {
+            repository.getSpellById(id = id).onEach { result ->
+                when (result) {
+                    is Resource.Loading -> {
+                        _state.update { it.copy(loading = true) }
+                    }
+
+                    is Resource.Success -> {
+                        _state.update {
+                            it.copy(
+                                loading = false,
+                                spell = result.data
+                            )
+                        }
+                    }
+
+                    is Resource.Error -> {
+                        _state.update { it.copy(loading = false, errorMessage = result.message) }
+                    }
+                }
+            }.launchIn(this)
+        }
+    }
+
 }

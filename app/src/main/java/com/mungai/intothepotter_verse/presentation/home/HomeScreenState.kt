@@ -14,5 +14,6 @@ data class HomeScreenState(
     val spells: List<Spell> = emptyList(),
     val loading: Boolean = false,
     val errorMessage: String? = null,
-    val query: String = ""
+    val query: String = "",
+    val spell: Spell? = null
 )

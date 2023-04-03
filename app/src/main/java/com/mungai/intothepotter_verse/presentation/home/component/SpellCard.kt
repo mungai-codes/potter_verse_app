@@ -32,7 +32,7 @@ fun SpellCard(
         modifier = modifier
             .width(100.dp)
             .height(110.dp)
-            .clickable { onClick(spell.name) },
+            .clickable { onClick(spell.id) },
         shape = RoundedCornerShape(16.dp),
         elevation = 12.dp
     ) {

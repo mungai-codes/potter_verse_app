@@ -30,6 +30,9 @@ interface PotterVerseDao {
     @Query("SELECT * from spell_table")
     suspend fun getAllSpells(): List<SpellEntity>
 
+    @Query("SELECT * FROM spell_table WHERE id = :id")
+    suspend fun getSpellById(id: String): SpellEntity
+
     @Query("SELECT * FROM character_table WHERE image != ''")
     suspend fun getMainCast(): List<CharacterEntity>
 

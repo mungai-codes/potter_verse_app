@@ -57,14 +57,10 @@ Q.idea/sonarlint/securityhotspotstore/f/4/f4a01d6a4fcb971362ec00a83903fd3902f521
 Q.idea/sonarlint/securityhotspotstore/6/2/6259ba2ae4b17448ac2001c9d4a6ad016cef935d,a\6\a60702aa78237befd4d835abdf298b3b12a30257
 w
 G.idea/sonarlint/issuestore/8/8/88886209c2092055b9307d3304481727307053eb,5\6\567e54886f9fac07e888b0636a1d7fbfe9e9468d
-z
-Japp/src/main/java/com/mungai/intothepotter_verse/data/remote/ApiService.kt,4\1\4188dd21bebbbf4366441ff4a436960780f88f92
 Ç
 Rapp/src/main/java/com/mungai/intothepotter_verse/data/local/PotterVerseDatabase.kt,6\8\6811af27018cd74d97628a1d0f99dd7adf8a6e10
 v
 Fapp/src/main/java/com/mungai/intothepotter_verse/domain/model/Spell.kt,f\3\f367b7367f99ddbce498a72beb07d2b13112e25b
-Å
-Qapp/src/main/java/com/mungai/intothepotter_verse/data/local/entity/SpellEntity.kt,8\7\879238744e54ca9e1832e6099115bd10d348eb45
 |
 Lapp/src/main/java/com/mungai/intothepotter_verse/data/remote/dto/SpellDto.kt,e\a\ea2c9317247d2d353cfcd7b8fe13c667ef9bae79
 s

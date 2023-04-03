@@ -1,6 +1,5 @@
 package com.mungai.intothepotter_verse.data.repository
 
-import android.util.Log
 import com.mungai.intothepotter_verse.common.Resource
 import com.mungai.intothepotter_verse.data.local.PotterVerseDatabase
 import com.mungai.intothepotter_verse.data.remote.ApiService
@@ -177,6 +176,22 @@ class PotterVerseRepositoryImpl @Inject constructor(
             emit(Resource.Loading())
             try {
                 val data = dao.getCharacterById(characterId = characterId).toCharacter()
+                emit(Resource.Success(data = data))
+            } catch (e: IOException) {
+                emit(Resource.Error(message = e.localizedMessage))
+                e.printStackTrace()
+            }
+        }.catch { e ->
+            emit(Resource.Error(message = e.localizedMessage))
+            e.printStackTrace()
+        }
+    }
+
+    override fun getSpellById(id: String): Flow<Resource<Spell>> {
+        return flow {
+            emit(Resource.Loading())
+            try {
+                val data = dao.getSpellById(id = id).toSpell()
                 emit(Resource.Success(data = data))
             } catch (e: IOException) {
                 emit(Resource.Error(message = e.localizedMessage))

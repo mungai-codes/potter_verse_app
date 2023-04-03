@@ -21,8 +21,6 @@ Napp/src/main/java/com/mungai/intothepotter_verse/data/local/entity/WandData.kt
 Papp/src/main/java/com/mungai/intothepotter_verse/data/remote/dto/CharacterDto.kt,9\0\90526125b0a4ba6e080a1ad9c07f44652036e9fd
 Å
 Q.idea/sonarlint/securityhotspotstore/f/0/f07866736216be0ee2aba49e392191aeae700a35,2\5\25f6469773b9f3ebb994178c1114a60412389f58
-z
-Japp/src/main/java/com/mungai/intothepotter_verse/data/remote/ApiService.kt,4\1\4188dd21bebbbf4366441ff4a436960780f88f92
 Å
 Q.idea/sonarlint/securityhotspotstore/2/8/287a5b225b6da6c7114ddcb274443c7c33088ada,c\7\c7cbc876e4a45f90ae7e26b7e1d116d5b0912b40
 w
@@ -31,8 +29,6 @@ v
 Fapp/src/main/java/com/mungai/intothepotter_verse/domain/model/Spell.kt,f\3\f367b7367f99ddbce498a72beb07d2b13112e25b
 Å
 Q.idea/sonarlint/securityhotspotstore/7/2/7294d3249951396a9dbda13a57169d21c24ee541,5\c\5c561727eaf5fd3e69bb0140301cb62314d72cca
-Å
-Qapp/src/main/java/com/mungai/intothepotter_verse/data/local/entity/SpellEntity.kt,8\7\879238744e54ca9e1832e6099115bd10d348eb45
 Å
 Q.idea/sonarlint/securityhotspotstore/8/8/88886209c2092055b9307d3304481727307053eb,c\5\c5a566ee6467650007d4a1babdbc9fd6496d9bb4
 |
