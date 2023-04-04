@@ -37,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mungai.intothepotter_verse.R
@@ -47,6 +48,7 @@ import com.mungai.intothepotter_verse.presentation.home.HomeViewModel
 import com.mungai.intothepotter_verse.presentation.home.component.CharacterCard
 import com.mungai.intothepotter_verse.presentation.home.component.Header
 import com.mungai.intothepotter_verse.presentation.home.component.SpellCard
+import com.mungai.intothepotter_verse.presentation.navigation.bottom_navigation.BottomNavItem
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -110,8 +112,13 @@ fun HomeScreen(
                 TopAppBar(
                     title = {
                         Text(
-                            text = "Potter Pedia",
-                            fontFamily = FontFamily(Font(R.font.euphoria_script))
+                            text = "Into the Potter-Verse",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            fontFamily = FontFamily(
+                                Font(R.font.baskervville_italic)
+                            ),
+                            color = Color.Black
                         )
                     },
                     backgroundColor = Color(0xFFD86767)
@@ -130,8 +137,10 @@ fun HomeScreen(
                 Header(
                     query = state.query,
                     onQueryChange = viewModel::updateQuery,
-                    onSearch = {
-
+                    onSearch = { query ->
+                        navController.navigate(
+                            BottomNavItem.Search.route.replace("?query={query}", "?query=$query")
+                        )
                     },
                     onHouseClick = {
                         navController.navigate("collection_screen?collection=${Collection.House.name}&house=$it")

@@ -27,7 +27,13 @@ fun NavGraph(navController: NavHostController, bottomPadding: Dp) {
             HomeScreen(navController = navController, bottomPadding = bottomPadding)
         }
         composable(
-            BottomNavItem.Search.route
+            BottomNavItem.Search.route, arguments = listOf(
+                navArgument(name = "query") {
+                    type = NavType.StringType
+                    nullable = true
+                    defaultValue = null
+                }
+            )
         ) {
             SearchScreen(navController = navController, bottomPadding = bottomPadding)
         }
@@ -49,7 +55,7 @@ fun NavGraphBuilder.detailsNavGraph(navController: NavController) {
                     defaultValue = ""
                 }
             )) {
-            CharacterDetailsScreen()
+            CharacterDetailsScreen(navController = navController)
         }
         composable("collection_screen?collection={collection}&house={house}", arguments = listOf(
             navArgument(name = "collection") {

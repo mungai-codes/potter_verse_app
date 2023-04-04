@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            IntoThePotterVerseTheme(darkTheme = false) {
+            IntoThePotterVerseTheme(darkTheme = true) {
                 val navController = rememberNavController()
                 Scaffold(
                     bottomBar = {

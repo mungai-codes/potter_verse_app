@@ -38,23 +38,37 @@ class CollectionViewModel @Inject constructor(
         savedStateHandle.get<String>("collection")?.let { collection ->
             when (collection) {
                 Collection.Cast.name -> {
-                    _state.update { it.copy(collection = collection, showSpells = false) }
-                    getAllCast()
-                }
-                Collection.Spell.name -> {
-                    _state.update { it.copy(collection = collection, showSpells = true) }
-                    getSpells()
-                }
-                Collection.House.name -> {
-                    savedStateHandle.get<String>("house")?.let { house ->
-                        getHouseMembers(house = house)
-                        _state.update { it.copy(house = house) }
-                    }
                     _state.update {
                         it.copy(
-                            collection = collection,
+                            house = "",
+                            title = "Potterverse Characters ",
                             showSpells = false
                         )
+                    }
+                    getAllCast()
+                }
+
+                Collection.Spell.name -> {
+                    _state.update {
+                        it.copy(
+                            house = "",
+                            title = "Potterverse Spells",
+                            showSpells = true
+                        )
+                    }
+                    getSpells()
+                }
+
+                else -> {
+                    savedStateHandle.get<String>("house")?.let { house ->
+                        getHouseMembers(house = house)
+                        _state.update {
+                            it.copy(
+                                house = house,
+                                title = "$house members",
+                                showSpells = false
+                            )
+                        }
                     }
                 }
             }

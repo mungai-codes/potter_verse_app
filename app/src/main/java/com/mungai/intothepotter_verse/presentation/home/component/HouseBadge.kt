@@ -61,13 +61,23 @@ fun HouseBadge(
                     .clickable { onClick(title) }
             )
         }
-        Text(
-            text = title,
-            textAlign = TextAlign.Center,
-            fontSize = textSize,
-            fontFamily = FontFamily(Font(R.font.garamond_semibold_italic)),
-            color = textColor
-        )
+        if (title == "") {
+            Text(
+                text = "Hogwarts",
+                textAlign = TextAlign.Center,
+                fontSize = textSize,
+                fontFamily = FontFamily(Font(R.font.garamond_semibold_italic)),
+                color = textColor
+            )
+        } else {
+            Text(
+                text = title,
+                textAlign = TextAlign.Center,
+                fontSize = textSize,
+                fontFamily = FontFamily(Font(R.font.garamond_semibold_italic)),
+                color = textColor
+            )
+        }
     }
 }
 

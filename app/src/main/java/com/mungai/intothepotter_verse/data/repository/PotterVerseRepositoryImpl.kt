@@ -127,32 +127,6 @@ class PotterVerseRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getWizards(): Flow<Resource<List<Character>>> {
-        return flow {
-            emit(Resource.Loading())
-            val localData = dao.getWizards()
-            if (localData.isEmpty()) {
-                try {
-                    val response = apiService.getAllCharacters().map { it.toCharacterEntity() }
-                    dao.insertCharacters(characters = response)
-                    val data = dao.getWizards()
-                    emit(Resource.Success(data = data.map { it.toCharacter() }))
-                } catch (e: HttpException) {
-                    emit(Resource.Error(message = e.localizedMessage))
-                    e.printStackTrace()
-                } catch (e: IOException) {
-                    emit(Resource.Error(message = e.localizedMessage))
-                    e.printStackTrace()
-                }
-            } else {
-                emit(Resource.Success(data = localData.map { it.toCharacter() }))
-            }
-        }.catch { e ->
-            emit(Resource.Error(message = e.localizedMessage))
-            e.printStackTrace()
-        }
-    }
-
     override fun getAllCharacters(): Flow<Resource<List<Character>>> {
         return flow<Resource<List<Character>>> {
             emit(Resource.Loading())
@@ -219,14 +193,14 @@ class PotterVerseRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getCharactersByHouseAndName(
+    override fun getCharactersByNameAndHouse(
         house: String,
         name: String
     ): Flow<Resource<List<Character>>> {
         return flow {
             emit(Resource.Loading())
             try {
-                val data = dao.getCharactersByHouseAndName(house = house, name = name)
+                val data = dao.getCharactersByNameAndHouse(house = house, name = name)
                     .map { it.toCharacter() }
                 emit(Resource.Success(data = data))
             } catch (e: IOException) {

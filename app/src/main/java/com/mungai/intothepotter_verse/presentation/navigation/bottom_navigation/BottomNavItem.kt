@@ -12,6 +12,6 @@ sealed class BottomNavItem(var title: String, var icon: ImageVector, var route: 
         BottomNavItem(
             title = "Search",
             icon = Icons.Rounded.Search,
-            route = "search_screen"
+            route = "search_screen?query={query}"
         )
 }

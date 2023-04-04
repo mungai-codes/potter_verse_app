@@ -15,8 +15,6 @@ interface PotterVerseRepository {
 
     fun getStudents(): Flow<Resource<List<Character>>>
 
-    fun getWizards(): Flow<Resource<List<Character>>>
-
     fun getAllCharacters(): Flow<Resource<List<Character>>>
 
     fun getCharacterById(characterId: String): Flow<Resource<Character>>
@@ -25,7 +23,7 @@ interface PotterVerseRepository {
 
     fun getCharactersByName(name: String): Flow<Resource<List<Character>>>
 
-    fun getCharactersByHouseAndName(house: String, name: String): Flow<Resource<List<Character>>>
+    fun getCharactersByNameAndHouse(house: String, name: String): Flow<Resource<List<Character>>>
 
     fun getSpellById(id: String): Flow<Resource<Spell>>
 }
