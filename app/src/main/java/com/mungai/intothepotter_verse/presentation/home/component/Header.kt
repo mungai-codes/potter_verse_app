@@ -98,7 +98,7 @@ fun Header(
                     badge = house.badge,
                     title = house.name,
                     textColor = house.houseColor,
-                    onClick = { onHouseClick(it) })
+                    onClick = { onHouseClick(house.name) })
             }
         }
         Divider(thickness = 3.dp, color = Color(0xFFFFD700))

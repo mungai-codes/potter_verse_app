@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -26,13 +27,23 @@ import com.mungai.intothepotter_verse.domain.model.Spell
 fun SpellCard(
     modifier: Modifier = Modifier,
     spell: Spell,
+    limited: Boolean = false,
     onClick: (String) -> Unit = {}
 ) {
-    Surface(
-        modifier = modifier
+
+    val mod = if (limited) {
+        modifier
             .width(100.dp)
             .height(110.dp)
-            .clickable { onClick(spell.id) },
+            .clickable { onClick(spell.id) }
+    } else {
+        modifier
+            .width(100.dp)
+            .wrapContentHeight()
+            .clickable { onClick(spell.id) }
+    }
+    Surface(
+        modifier = mod,
         shape = RoundedCornerShape(16.dp),
         elevation = 12.dp
     ) {

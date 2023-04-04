@@ -21,5 +21,11 @@ interface PotterVerseRepository {
 
     fun getCharacterById(characterId: String): Flow<Resource<Character>>
 
+    fun getCharactersByHouse(house: String): Flow<Resource<List<Character>>>
+
+    fun getCharactersByName(name: String): Flow<Resource<List<Character>>>
+
+    fun getCharactersByHouseAndName(house: String, name: String): Flow<Resource<List<Character>>>
+
     fun getSpellById(id: String): Flow<Resource<Spell>>
 }

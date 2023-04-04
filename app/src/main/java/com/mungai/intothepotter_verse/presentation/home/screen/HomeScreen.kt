@@ -23,7 +23,6 @@ import androidx.compose.material.icons.outlined.AutoStories
 import androidx.compose.material.icons.outlined.ChevronRight
 import androidx.compose.material.icons.outlined.Grade
 import androidx.compose.material.icons.outlined.School
-import androidx.compose.material.icons.outlined.SelfImprovement
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
@@ -41,14 +40,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mungai.intothepotter_verse.R
-import com.mungai.intothepotter_verse.common.Category
+import com.mungai.intothepotter_verse.common.Collection
 import com.mungai.intothepotter_verse.presentation.common.LazyRowItem
 import com.mungai.intothepotter_verse.presentation.common.Pill
 import com.mungai.intothepotter_verse.presentation.home.HomeViewModel
 import com.mungai.intothepotter_verse.presentation.home.component.CharacterCard
 import com.mungai.intothepotter_verse.presentation.home.component.Header
 import com.mungai.intothepotter_verse.presentation.home.component.SpellCard
-import com.mungai.intothepotter_verse.presentation.navigation.bottom_navigation.BottomNavItem
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -136,7 +134,7 @@ fun HomeScreen(
 
                     },
                     onHouseClick = {
-
+                        navController.navigate("collection_screen?collection=${Collection.House.name}&house=$it")
                     }
                 )
 
@@ -159,12 +157,40 @@ fun HomeScreen(
                                 icon = Icons.Outlined.ChevronRight,
                                 title = Pair("See All", MaterialTheme.colors.onSurface),
                                 onClick = {
-                                    navController.navigate(BottomNavItem.Search.route + "?category=${Category.Cast.category}")
+                                    navController.navigate("collection_screen?collection=${Collection.Cast.name}")
                                 }
                             )
                         }) { character ->
                             CharacterCard(character = character) {
                                 navController.navigate("character_details_screen" + "?characterId=${it}")
+                            }
+                        }
+                    }
+
+                    item {
+                        LazyRowItem(
+                            data = state.spells,
+                            content = {
+                                Pill(
+                                    isHeader = true,
+                                    icon = Icons.Outlined.AutoFixHigh,
+                                    title = Pair("Spells", MaterialTheme.colors.onSurface)
+                                )
+                                Pill(
+                                    icon = Icons.Outlined.ChevronRight,
+                                    title = Pair("See All", MaterialTheme.colors.onSurface),
+                                    onClick = {
+                                        navController.navigate("collection_screen?collection=${Collection.Spell.name}")
+
+                                    }
+                                )
+                            }
+                        ) { spell ->
+                            SpellCard(spell = spell, limited = true) { id ->
+                                scope.launch {
+                                    viewModel.getSpellById(id)
+                                    modalSheetState.show()
+                                }
                             }
                         }
                     }
@@ -186,54 +212,6 @@ fun HomeScreen(
                         }
                     }
 
-                    item {
-                        LazyRowItem(
-                            data = state.spells,
-                            content = {
-                                Pill(
-                                    isHeader = true,
-                                    icon = Icons.Outlined.AutoFixHigh,
-                                    title = Pair("Spells", MaterialTheme.colors.onSurface)
-                                )
-                                Pill(
-                                    icon = Icons.Outlined.ChevronRight,
-                                    title = Pair("See More", MaterialTheme.colors.onSurface),
-                                    onClick = { }
-                                )
-                            }
-                        ) { spell ->
-                            SpellCard(spell = spell) { id ->
-                                scope.launch {
-                                    viewModel.getSpellById(id)
-                                    modalSheetState.show()
-                                }
-                            }
-                        }
-                    }
-
-                    item {
-                        LazyRowItem(
-                            data = state.wizards,
-                            content = {
-                                Pill(
-                                    isHeader = true,
-                                    icon = Icons.Outlined.SelfImprovement,
-                                    title = Pair("Wizards", MaterialTheme.colors.onSurface)
-                                )
-                                Pill(
-                                    icon = Icons.Outlined.ChevronRight,
-                                    title = Pair("See More", MaterialTheme.colors.onSurface),
-                                    onClick = {
-
-                                    }
-                                )
-                            }
-                        ) { character ->
-                            CharacterCard(character = character) {
-                                navController.navigate("character_details_screen" + "?characterId=${it}")
-                            }
-                        }
-                    }
 
                     item {
                         LazyRowItem(

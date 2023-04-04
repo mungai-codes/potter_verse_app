@@ -45,4 +45,15 @@ interface PotterVerseDao {
     @Query("SELECT * FROM character_table WHERE hogwartsStaff = 1")
     suspend fun getStaff(): List<CharacterEntity>
 
+    @Query("SELECT * FROM character_table WHERE house = :house")
+    suspend fun getCharactersByHouse(house: String): List<CharacterEntity>
+
+    @Query("SELECT * FROM character_table WHERE name LIKE '%' || :name || '%'")
+    suspend fun getCharactersByName(name: String): List<CharacterEntity>
+
+    @Query("SELECT * FROM character_table WHERE house = :house AND name LIKE '%' || :name || '%'")
+    suspend fun getCharactersByHouseAndName(house: String, name: String): List<CharacterEntity>
+
+
+
 }

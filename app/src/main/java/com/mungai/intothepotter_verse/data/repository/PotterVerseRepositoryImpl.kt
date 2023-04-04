@@ -187,6 +187,58 @@ class PotterVerseRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun getCharactersByHouse(house: String): Flow<Resource<List<Character>>> {
+        return flow {
+            emit(Resource.Loading())
+            try {
+                val data = dao.getCharactersByHouse(house = house).map { it.toCharacter() }
+                emit(Resource.Success(data = data))
+            } catch (e: IOException) {
+                emit(Resource.Error(message = e.localizedMessage))
+                e.printStackTrace()
+            }
+        }.catch { e ->
+            emit(Resource.Error(message = e.localizedMessage))
+            e.printStackTrace()
+        }
+    }
+
+    override fun getCharactersByName(name: String): Flow<Resource<List<Character>>> {
+        return flow {
+            emit(Resource.Loading())
+            try {
+                val data = dao.getCharactersByName(name = name).map { it.toCharacter() }
+                emit(Resource.Success(data = data))
+            } catch (e: IOException) {
+                emit(Resource.Error(message = e.localizedMessage))
+                e.printStackTrace()
+            }
+        }.catch { e ->
+            emit(Resource.Error(message = e.localizedMessage))
+            e.printStackTrace()
+        }
+    }
+
+    override fun getCharactersByHouseAndName(
+        house: String,
+        name: String
+    ): Flow<Resource<List<Character>>> {
+        return flow {
+            emit(Resource.Loading())
+            try {
+                val data = dao.getCharactersByHouseAndName(house = house, name = name)
+                    .map { it.toCharacter() }
+                emit(Resource.Success(data = data))
+            } catch (e: IOException) {
+                emit(Resource.Error(message = e.localizedMessage))
+                e.printStackTrace()
+            }
+        }.catch { e ->
+            emit(Resource.Error(message = e.localizedMessage))
+            e.printStackTrace()
+        }
+    }
+
     override fun getSpellById(id: String): Flow<Resource<Spell>> {
         return flow {
             emit(Resource.Loading())

@@ -2,6 +2,7 @@ package com.mungai.intothepotter_verse.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
+import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -9,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.navigation
+import com.mungai.intothepotter_verse.presentation.collection.screen.CollectionScreen
 import com.mungai.intothepotter_verse.presentation.detail.screen.CharacterDetailsScreen
 import com.mungai.intothepotter_verse.presentation.home.screen.HomeScreen
 import com.mungai.intothepotter_verse.presentation.navigation.bottom_navigation.BottomNavItem
@@ -25,23 +27,16 @@ fun NavGraph(navController: NavHostController, bottomPadding: Dp) {
             HomeScreen(navController = navController, bottomPadding = bottomPadding)
         }
         composable(
-            BottomNavItem.Search.route + "?category={category}",
-            arguments = listOf(
-                navArgument(name = "category") {
-                    type = NavType.StringType
-                    nullable = true
-                    defaultValue = null
-                }
-            )
+            BottomNavItem.Search.route
         ) {
             SearchScreen(navController = navController, bottomPadding = bottomPadding)
         }
-        detailsNavGraph()
+        detailsNavGraph(navController = navController)
     }
 }
 
 
-fun NavGraphBuilder.detailsNavGraph() {
+fun NavGraphBuilder.detailsNavGraph(navController: NavController) {
     navigation(
         route = Graphs.SECONDARY,
         startDestination = "character_details_screen"
@@ -55,6 +50,20 @@ fun NavGraphBuilder.detailsNavGraph() {
                 }
             )) {
             CharacterDetailsScreen()
+        }
+        composable("collection_screen?collection={collection}&house={house}", arguments = listOf(
+            navArgument(name = "collection") {
+                type = NavType.StringType
+                nullable = true
+                defaultValue = null
+            },
+            navArgument(name = "house") {
+                type = NavType.StringType
+                nullable = true
+                defaultValue = null
+            }
+        )) {
+            CollectionScreen(navController = navController)
         }
     }
 }
