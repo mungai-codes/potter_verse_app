@@ -1,15 +1,16 @@
-package com.mungai.intothepotter_verse.data.repository
+package com.mungai.intothepotter_verse.data.remote
 
-import com.mungai.intothepotter_verse.common.ResponseFileReader
-import com.mungai.intothepotter_verse.data.remote.ApiService
+import com.mungai.intothepotter_verse.ResponseFileReader
 import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
+import okio.IOException
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.net.HttpURLConnection
@@ -53,6 +54,7 @@ class PotterVerseApiTests {
         Assert.assertNotNull(runBlocking { apiService.getAllCharacters() })
     }
 
+
     @Test
     fun `the spell endpoint should not return null`() {
         response = ResponseFileReader("spell.json").content
@@ -66,9 +68,8 @@ class PotterVerseApiTests {
         Assert.assertNotNull(runBlocking { apiService.getAllSpells() })
     }
 
-
     @Test
-    fun `character Json should be deserialized correctly`() {
+    fun `character JSON should be deserialized correctly`() {
         // raeding the character JSON response from a file
         response = ResponseFileReader("character.json").content
 
@@ -128,6 +129,29 @@ class PotterVerseApiTests {
         Assert.assertEquals("c76a2922-ba4c-4278-baab-44defb631236", firstSpell.id)
         Assert.assertEquals("Aberto", firstSpell.name)
         Assert.assertEquals("Opens locked doors", firstSpell.description)
+    }
+
+    @Test
+    fun `error response from api should throw exception`() {
+
+        response = ResponseFileReader("character.json").content
+
+        // Enqueue a mock error response from the server
+        server.enqueue(
+            MockResponse().setResponseCode(HttpURLConnection.HTTP_NOT_FOUND).setBody(response)
+        )
+
+        // Call the API and catch the expected exception
+        var exceptionThrown = false
+        try {
+            runBlocking { apiService.getAllCharacters() }
+        } catch (e: Exception) {
+            // Check if the exception is a common network exception
+            exceptionThrown = e is IOException || e is HttpException
+        }
+
+        // Verify that an exception was thrown
+        Assert.assertTrue(exceptionThrown)
     }
 
     @After

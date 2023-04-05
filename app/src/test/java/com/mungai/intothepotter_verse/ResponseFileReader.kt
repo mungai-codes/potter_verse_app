@@ -1,4 +1,4 @@
-package com.mungai.intothepotter_verse.common
+package com.mungai.intothepotter_verse
 
 import java.io.InputStreamReader
 
