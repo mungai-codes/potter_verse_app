@@ -4,6 +4,7 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+// This is a converter class for converting a List<String> to a JSON string and vice versa.
 class Converter {
 
     @TypeConverter

@@ -21,8 +21,6 @@ w
 G.idea/sonarlint/issuestore/f/0/f07866736216be0ee2aba49e392191aeae700a35,b\f\bfb9453d49af9bc40f5f7a5f034be3c7ef8fa6bf
 \
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
-‚
-Rapp/src/main/java/com/mungai/intothepotter_verse/data/local/PotterVerseDatabase.kt,6\8\6811af27018cd74d97628a1d0f99dd7adf8a6e10
 |
 Lapp/src/main/java/com/mungai/intothepotter_verse/data/remote/dto/SpellDto.kt,e\a\ea2c9317247d2d353cfcd7b8fe13c667ef9bae79
 u
@@ -47,14 +45,8 @@ Yapp/src/main/java/com/mungai/intothepotter_verse/presentation/home/component/Sp
 aapp/src/main/java/com/mungai/intothepotter_verse/presentation/collection/CollectionScreenState.kt,3\d\3d680e404f75431e1131f853376ad26bf98cc944
 ‹
 [app/src/main/java/com/mungai/intothepotter_verse/presentation/search/screen/SearchScreen.kt,0\8\08df587ee9431ddc5983709a08438e9c991af082
-}
-Mapp/src/main/java/com/mungai/intothepotter_verse/data/local/PotterVerseDao.kt,3\3\339cda5c564ea87f840aa6cafc934f5feb93661a
 Ž
 ^app/src/main/java/com/mungai/intothepotter_verse/presentation/search/component/SearchWidget.kt,1\c\1cd9632c3a63171f736474810dfab4724befd58f
-s
-Capp/src/main/java/com/mungai/intothepotter_verse/common/Resource.kt,2\d\2d7673f33c4108151468748f4f42d020a5cc8b75
-t
-Dapp/src/main/java/com/mungai/intothepotter_verse/common/Constants.kt,b\9\b95a302f689300dd3c8f47391279f444006aad9d
 Š
 Zapp/src/main/java/com/mungai/intothepotter_verse/presentation/home/component/HouseBadge.kt,4\1\4155f6a10ab54f6805707fd288370397796fb4d9
 ‚
