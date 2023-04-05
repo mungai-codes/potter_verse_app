@@ -24,7 +24,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import com.mungai.intothepotter_verse.R
-import com.mungai.intothepotter_verse.presentation.common.Pill
+import com.mungai.intothepotter_verse.presentation.common.ui.Pill
 import com.mungai.potterpedia.domain.model.Character
 
 @Composable

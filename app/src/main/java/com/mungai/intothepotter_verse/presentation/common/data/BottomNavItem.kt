@@ -1,4 +1,4 @@
-package com.mungai.intothepotter_verse.presentation.navigation.bottom_navigation
+package com.mungai.intothepotter_verse.presentation.common.data
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Home

@@ -2,8 +2,8 @@ package com.mungai.intothepotter_verse.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mungai.intothepotter_verse.common.IoDispatcher
 import com.mungai.intothepotter_verse.common.Resource
+import com.mungai.intothepotter_verse.di.IoDispatcher
 import com.mungai.intothepotter_verse.domain.repository.PotterVerseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher

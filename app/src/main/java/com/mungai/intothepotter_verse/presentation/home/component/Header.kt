@@ -30,6 +30,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.mungai.intothepotter_verse.R
+import com.mungai.intothepotter_verse.presentation.common.data.House
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable

@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.mungai.intothepotter_verse.presentation.common.data.BottomNavItem
 
 @Composable
 fun BottomNavigation(navController: NavController) {

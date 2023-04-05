@@ -3,7 +3,6 @@ package com.mungai.intothepotter_verse.di
 import android.app.Application
 import androidx.room.Room
 import com.mungai.intothepotter_verse.common.Constants
-import com.mungai.intothepotter_verse.common.IoDispatcher
 import com.mungai.intothepotter_verse.data.local.PotterVerseDatabase
 import com.mungai.intothepotter_verse.data.remote.ApiService
 import com.mungai.intothepotter_verse.data.repository.PotterVerseRepositoryImpl

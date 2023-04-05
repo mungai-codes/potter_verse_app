@@ -1,4 +1,4 @@
-package com.mungai.intothepotter_verse.presentation.home.component
+package com.mungai.intothepotter_verse.presentation.common.data
 
 import androidx.compose.ui.graphics.Color
 import com.mungai.intothepotter_verse.R

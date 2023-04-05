@@ -41,14 +41,14 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mungai.intothepotter_verse.R
-import com.mungai.intothepotter_verse.common.Collection
-import com.mungai.intothepotter_verse.presentation.common.LazyRowItem
-import com.mungai.intothepotter_verse.presentation.common.Pill
+import com.mungai.intothepotter_verse.presentation.common.data.BottomNavItem
+import com.mungai.intothepotter_verse.presentation.common.data.Collection
+import com.mungai.intothepotter_verse.presentation.common.ui.CharacterCard
+import com.mungai.intothepotter_verse.presentation.common.ui.Pill
 import com.mungai.intothepotter_verse.presentation.home.HomeViewModel
-import com.mungai.intothepotter_verse.presentation.home.component.CharacterCard
 import com.mungai.intothepotter_verse.presentation.home.component.Header
+import com.mungai.intothepotter_verse.presentation.home.component.LazyRowItem
 import com.mungai.intothepotter_verse.presentation.home.component.SpellCard
-import com.mungai.intothepotter_verse.presentation.navigation.bottom_navigation.BottomNavItem
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)

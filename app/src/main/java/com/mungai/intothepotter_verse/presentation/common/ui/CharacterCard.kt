@@ -1,4 +1,4 @@
-package com.mungai.intothepotter_verse.presentation.home.component
+package com.mungai.intothepotter_verse.presentation.common.ui
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.mungai.intothepotter_verse.R
-import com.mungai.intothepotter_verse.common.getHouseColors
+import com.mungai.intothepotter_verse.presentation.common.data.getHouseColors
 import com.mungai.potterpedia.domain.model.Character
 
 @Composable

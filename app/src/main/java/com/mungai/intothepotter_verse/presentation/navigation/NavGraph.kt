@@ -11,9 +11,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.navigation
 import com.mungai.intothepotter_verse.presentation.collection.screen.CollectionScreen
+import com.mungai.intothepotter_verse.presentation.common.data.BottomNavItem
 import com.mungai.intothepotter_verse.presentation.detail.screen.CharacterDetailsScreen
 import com.mungai.intothepotter_verse.presentation.home.screen.HomeScreen
-import com.mungai.intothepotter_verse.presentation.navigation.bottom_navigation.BottomNavItem
 import com.mungai.intothepotter_verse.presentation.search.screen.SearchScreen
 
 @Composable

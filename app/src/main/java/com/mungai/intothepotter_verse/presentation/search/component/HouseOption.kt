@@ -29,7 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.mungai.intothepotter_verse.R
-import com.mungai.intothepotter_verse.presentation.home.component.House
+import com.mungai.intothepotter_verse.presentation.common.data.House
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable

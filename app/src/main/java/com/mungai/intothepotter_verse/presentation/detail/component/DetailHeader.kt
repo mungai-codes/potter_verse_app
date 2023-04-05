@@ -15,9 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mungai.intothepotter_verse.common.getHouseBadge
-import com.mungai.intothepotter_verse.common.getHouseColors
-import com.mungai.intothepotter_verse.presentation.home.component.CharacterCard
+import com.mungai.intothepotter_verse.presentation.common.data.getHouseBadge
+import com.mungai.intothepotter_verse.presentation.common.data.getHouseColors
+import com.mungai.intothepotter_verse.presentation.common.ui.CharacterCard
 import com.mungai.intothepotter_verse.presentation.home.component.HouseBadge
 import com.mungai.potterpedia.domain.model.Character
 

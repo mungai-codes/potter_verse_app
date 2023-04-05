@@ -3,10 +3,10 @@ package com.mungai.intothepotter_verse.presentation.collection
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mungai.intothepotter_verse.common.Collection
-import com.mungai.intothepotter_verse.common.IoDispatcher
 import com.mungai.intothepotter_verse.common.Resource
+import com.mungai.intothepotter_verse.di.IoDispatcher
 import com.mungai.intothepotter_verse.domain.repository.PotterVerseRepository
+import com.mungai.intothepotter_verse.presentation.common.data.Collection
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow

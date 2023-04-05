@@ -37,9 +37,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mungai.intothepotter_verse.R
-import com.mungai.intothepotter_verse.common.getHouseColors
 import com.mungai.intothepotter_verse.presentation.collection.CollectionViewModel
-import com.mungai.intothepotter_verse.presentation.home.component.CharacterCard
+import com.mungai.intothepotter_verse.presentation.common.data.getHouseColors
+import com.mungai.intothepotter_verse.presentation.common.ui.CharacterCard
 import com.mungai.intothepotter_verse.presentation.home.component.SpellCard
 
 @OptIn(ExperimentalFoundationApi::class)

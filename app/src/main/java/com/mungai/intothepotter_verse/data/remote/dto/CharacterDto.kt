@@ -1,7 +1,6 @@
 package com.mungai.potterpedia.data.remote.dto
 
 import com.mungai.intothepotter_verse.data.local.entity.CharacterEntity
-import com.mungai.potterpedia.domain.model.Character
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

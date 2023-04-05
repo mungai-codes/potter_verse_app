@@ -12,7 +12,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Category
 import androidx.compose.material.icons.outlined.Extension
-import androidx.compose.material.icons.outlined.Handyman
 import androidx.compose.material.icons.outlined.MovieCreation
 import androidx.compose.material.icons.outlined.Spa
 import androidx.compose.material.icons.outlined.Timeline
@@ -24,7 +23,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import com.mungai.intothepotter_verse.R
-import com.mungai.intothepotter_verse.presentation.common.Pill
+import com.mungai.intothepotter_verse.presentation.common.ui.Pill
 import com.mungai.potterpedia.domain.model.Character
 
 @Composable

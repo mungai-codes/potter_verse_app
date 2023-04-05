@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mungai.intothepotter_verse.R
-import com.mungai.intothepotter_verse.common.getHouseColors
+import com.mungai.intothepotter_verse.presentation.common.data.getHouseColors
 import com.mungai.intothepotter_verse.presentation.detail.DetailsViewModel
 import com.mungai.intothepotter_verse.presentation.detail.component.DetailBody
 import com.mungai.intothepotter_verse.presentation.detail.component.DetailHeader

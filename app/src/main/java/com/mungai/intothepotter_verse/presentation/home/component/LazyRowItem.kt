@@ -1,4 +1,4 @@
-package com.mungai.intothepotter_verse.presentation.common
+package com.mungai.intothepotter_verse.presentation.home.component
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
