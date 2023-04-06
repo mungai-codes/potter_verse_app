@@ -9,11 +9,9 @@ data class HomeScreenState(
     val staff: List<Character> = emptyList(),
     val wizards: List<Character> = emptyList(),
     val students: List<Character> = emptyList(),
-    val loadingStaff: Boolean = false,
-    val staffError: String? = null,
     val spells: List<Spell> = emptyList(),
     val loading: Boolean = false,
-    val errorMessage: String? = null,
+    val error: String? = null,
     val query: String = "",
     val spell: Spell? = null
 )

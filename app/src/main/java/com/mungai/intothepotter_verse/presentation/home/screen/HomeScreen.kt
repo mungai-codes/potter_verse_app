@@ -44,6 +44,8 @@ import com.mungai.intothepotter_verse.R
 import com.mungai.intothepotter_verse.presentation.common.data.BottomNavItem
 import com.mungai.intothepotter_verse.presentation.common.data.Collection
 import com.mungai.intothepotter_verse.presentation.common.ui.CharacterCard
+import com.mungai.intothepotter_verse.presentation.common.ui.ErrorCard
+import com.mungai.intothepotter_verse.presentation.common.ui.Loading
 import com.mungai.intothepotter_verse.presentation.common.ui.Pill
 import com.mungai.intothepotter_verse.presentation.home.HomeViewModel
 import com.mungai.intothepotter_verse.presentation.home.component.Header
@@ -133,6 +135,14 @@ fun HomeScreen(
                     .fillMaxSize()
                     .padding(top = innerPadding.calculateTopPadding())
             ) {
+
+                if (state.loading) {
+                    Loading()
+                }
+
+                state.error?.let {
+                    ErrorCard(errorMessage = it)
+                }
 
                 Header(
                     query = state.query,

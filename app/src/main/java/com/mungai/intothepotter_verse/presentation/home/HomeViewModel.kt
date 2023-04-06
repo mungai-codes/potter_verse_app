@@ -54,7 +54,7 @@ class HomeViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _state.update { it.copy(loading = false, errorMessage = result.message) }
+                        _state.update { it.copy(loading = false, error = result.message) }
                     }
                 }
             }.launchIn(this)
@@ -66,20 +66,20 @@ class HomeViewModel @Inject constructor(
             repository.getStaff().onEach { result ->
                 when (result) {
                     is Resource.Loading -> {
-                        _state.update { it.copy(loadingStaff = true) }
+                        _state.update { it.copy(loading = true) }
                     }
 
                     is Resource.Success -> {
                         _state.update {
                             it.copy(
-                                loadingStaff = false,
+                                loading = false,
                                 staff = result.data ?: emptyList()
                             )
                         }
                     }
 
                     is Resource.Error -> {
-                        _state.update { it.copy(loadingStaff = false, staffError = result.message) }
+                        _state.update { it.copy(loading = false, error = result.message) }
 
                     }
                 }
@@ -105,7 +105,7 @@ class HomeViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _state.update { it.copy(loading = false, errorMessage = result.message) }
+                        _state.update { it.copy(loading = false, error = result.message) }
                     }
                 }
             }.launchIn(this)
@@ -130,7 +130,7 @@ class HomeViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _state.update { it.copy(loading = false, errorMessage = result.message) }
+                        _state.update { it.copy(loading = false, error = result.message) }
                     }
                 }
             }.launchIn(this)
@@ -155,7 +155,7 @@ class HomeViewModel @Inject constructor(
                     }
 
                     is Resource.Error -> {
-                        _state.update { it.copy(loading = false, errorMessage = result.message) }
+                        _state.update { it.copy(loading = false, error = result.message) }
                     }
                 }
             }.launchIn(this)

@@ -1,7 +1,6 @@
 package com.mungai.intothepotter_verse.presentation.detail.screen
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
@@ -32,6 +30,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mungai.intothepotter_verse.R
 import com.mungai.intothepotter_verse.presentation.common.data.getHouseColors
+import com.mungai.intothepotter_verse.presentation.common.ui.ErrorCard
+import com.mungai.intothepotter_verse.presentation.common.ui.Loading
 import com.mungai.intothepotter_verse.presentation.detail.DetailsViewModel
 import com.mungai.intothepotter_verse.presentation.detail.component.DetailBody
 import com.mungai.intothepotter_verse.presentation.detail.component.DetailHeader
@@ -88,15 +88,11 @@ fun CharacterDetailsScreen(
         ) {
 
             if (state.loading) {
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator()
-                }
+                Loading()
             }
 
             state.error?.let {
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text(text = it)
-                }
+                ErrorCard(errorMessage = it)
             }
 
             state.character?.let { character ->

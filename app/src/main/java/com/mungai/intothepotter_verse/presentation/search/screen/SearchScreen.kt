@@ -2,7 +2,6 @@ package com.mungai.intothepotter_verse.presentation.search.screen
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -12,7 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
@@ -34,6 +33,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mungai.intothepotter_verse.R
+import com.mungai.intothepotter_verse.presentation.common.ui.ErrorCard
+import com.mungai.intothepotter_verse.presentation.common.ui.Loading
 import com.mungai.intothepotter_verse.presentation.search.SearchViewModel
 import com.mungai.intothepotter_verse.presentation.search.component.SearchResult
 import com.mungai.intothepotter_verse.presentation.search.component.SearchWidget
@@ -91,15 +92,11 @@ fun SearchScreen(
         ) {
 
             if (state.loading) {
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator()
-                }
+                Loading()
             }
 
             state.error?.let {
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text(text = it)
-                }
+                ErrorCard(errorMessage = it)
             }
 
             SearchWidget(
@@ -113,6 +110,8 @@ fun SearchScreen(
             ) {
                 viewModel.onSearch()
             }
+
+            Divider(thickness = 3.dp, color = Color(0xFFFFD700))
 
             LazyColumn(
                 modifier = Modifier
