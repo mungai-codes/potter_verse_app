@@ -109,12 +109,6 @@ dependencies {
     // icons extended
     implementation "androidx.compose.material:material-icons-extended:1.4.0"
 
-    // shimmer me timbers
-    implementation 'com.valentinilk.shimmer:compose-shimmer:1.0.4'
-
-    // palette api
-    implementation('androidx.palette:palette-ktx:1.0.0')
-
     // for type converters
     implementation 'com.google.code.gson:gson:2.10.1'
 }
